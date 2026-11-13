@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Build agent
+        run: dotnet build windows-agent/RentDeviceAgent.csproj -c Release
+      - name: Build updater
+        run: dotnet build windows-agent/RentDeviceAgent.Updater.csproj -c Release
