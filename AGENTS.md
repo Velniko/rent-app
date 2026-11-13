@@ -4,7 +4,7 @@
 
 ## 项目概览
 
-`rent-app` 是出租 Windows 设备上的**设备管理客户端**，与 [PC Rental 租赁网站](https://github.com/aaoqqqdd/rent)（本地同级目录 `../rent`，git remote `rent` / `rent-web`）联动。本仓库 git remote 为 `rent-app`（`github.com/aaoqqqdd/rent-app`）。
+`rent-app` 是出租 Windows 设备上的**设备管理客户端**，与 [PC Rental 租赁网站](https://github.com/Velniko/rent)（本地同级目录 `../rent`，git remote `rent` / `rent-web`）联动。本仓库 git remote 为 `rent-app`（`github.com/Velniko/rent-app`）。
 
 - 网站是事实来源：设备、客户、订单、租期、付款、合同、管理操作都在网站侧管理。
 - 客户端只做：识别设备、上报状态与硬件信息、接收租赁状态、显示租期 / 到期提醒、执行授权的远程指令、断网时维持本地租期状态。

@@ -105,7 +105,7 @@ jobs:
           $path = 'windows-agent/publish-x64/appsettings.json'
           $settings = Get-Content $path -Raw | ConvertFrom-Json
           $settings.RentDeviceAgent.Version = $env:RELEASE_VERSION
-          $settings.RentDeviceAgent.GitHubRepository = 'aaoqqqdd/rent-app'
+          $settings.RentDeviceAgent.GitHubRepository = 'Velniko/rent-app'
           $settings.RentDeviceAgent.GitHubReleaseAsset = 'RentDeviceAgent-x64.exe'
           $settings | ConvertTo-Json -Depth 8 | Set-Content $path -Encoding UTF8
           Copy-Item $path 'windows-agent/publish-x86/appsettings.json' -Force

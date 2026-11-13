@@ -1,6 +1,6 @@
 # rent-app
 
-出租设备的 **Windows 设备管理客户端**，与 [PC Rental 租赁网站](https://github.com/aaoqqqdd/rent)（本地 `../rent` 目录，下称"网站"）联动。
+出租设备的 **Windows 设备管理客户端**，与 [PC Rental 租赁网站](https://github.com/Velniko/rent)（本地 `../rent` 目录，下称"网站"）联动。
 
 客户端安装在每一台出租的 Windows 设备上，负责识别设备、上报运行状态与硬件信息、接收当前租赁状态、显示租期与到期提醒，并执行经授权的远程管理指令。它本身**不是**独立的租赁后台——设备、客户、订单、租期、付款、合同仍以网站为唯一管理入口。
 
@@ -15,13 +15,13 @@
                  │        │
         ┌────────┘        └────────┐
    租赁网站 / 管理后台        rent-app Windows 客户端
-   （github.com/aaoqqqdd/rent）   （本仓库）
+   （github.com/Velniko/rent）    （本仓库）
 ```
 
 - 客户端**只**通过 HTTPS 调用网站的 `/api/device-agent/*` 接口，**禁止**直接连接 Cloudflare D1。
 - 网站是事实来源：设备绑定、租期、设备模式、远程指令都由网站下发，客户端只上报与执行。
 - 网站地址默认指向 `appsettings.json` 中的 `ApiBaseUrl`（当前为 `https://rent.ydnw6zt6vj.workers.dev`）。
-- 自动更新从 GitHub Releases（`aaoqqqdd/rent-app`）拉取，更新清单由网站的 `/api/device-agent/update` 提供。
+- 自动更新从 GitHub Releases（`Velniko/rent-app`）拉取，更新清单由网站的 `/api/device-agent/update` 提供。
 
 调用的网站接口：
 
@@ -81,7 +81,7 @@ publish.ps1                    本地一键 publish 到 dist/
 | `HeartbeatIntervalSeconds` | 心跳间隔（默认 10） |
 | `Version` | 当前客户端版本（发布流水线回写，勿手改） |
 | `UpdateManifestUrl` | 网站的更新清单地址 |
-| `GitHubRepository` / `GitHubReleaseAsset` | 自动更新下载源（`aaoqqqdd/rent-app` / 按架构选 `RentDeviceAgent-x64.exe` 或 `-x86.exe`） |
+| `GitHubRepository` / `GitHubReleaseAsset` | 自动更新下载源（`Velniko/rent-app` / 按架构选 `RentDeviceAgent-x64.exe` 或 `-x86.exe`） |
 | `UpdateCheckIntervalHours` | 检查更新间隔（默认 1） |
 | `DashboardPort` | 本地状态面板端口（默认 47821） |
 | `DataCleanup` | 租约结束 / 归还时自动清除承租人痕迹的开关（见下）。`Enabled` 总开关、`RunOnLeaseEnd` 到期自动清理、`WipeBrowsers` / `WipeWeChat` / `WipeRecycleBin` 分项、`RemoveUserProfileOnDelete` 删除租户时一并删用户目录、`ExtraPaths` 额外路径 |
